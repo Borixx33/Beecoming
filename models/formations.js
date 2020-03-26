@@ -9,4 +9,7 @@ module.exports = {
 
     return this.findOneFormation(lastID)   
 },
+  deleteFormation(id) {
+    return db.run("DELETE FROM Formations WHERE rowid = ?", id)
+  },
 }

@@ -53,6 +53,25 @@ router.post('/', (req, res, next) => {
     })
 })
 
+// Supprimer une formation
+router.post('/formation/delete/:id', (req, res, next) => {
+    Experience.deleteFormation(req.params.id)
+    .then((Experience) => {
+      res.format({
+        html: () => {
+            res.redirect('/')
+        },
+        json: () => {
+            res.status(204).json(Experience)
+        }
+      })
+    }).catch((err) => {
+        res.status(410).json('FORMATION_NOT_DELETABLE')
+        console.log(err)
+        return next(err)
+    })
+})
+
 // Gestion des errreurs
 router.use((err, req, res, next) => {
     res.format({
