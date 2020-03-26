@@ -36,6 +36,23 @@ router.get('/', (req, res, next) => {
     })
 })
 
+// Ajoute une formation
+router.post('/', (req, res, next) => {
+    Experience.insertFormation(req.body)
+    .then((Experience) => { 
+        res.format({
+            html : () => {
+                res.redirect('/')    
+            },
+            json : () => {
+                res.status(201).json(Experience)
+            }
+        })
+    }).catch((err) => {
+        return next(err)
+    })
+})
+
 // Gestion des errreurs
 router.use((err, req, res, next) => {
     res.format({

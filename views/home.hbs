@@ -12,5 +12,27 @@
     <div class="container text-center mt-5 p-1">
         {{{content}}}
     </div>
+    <form action="/", method="POST">
+        <div class="container mt-5">
+            <div class="form-group">
+                <label for="annee">Année :</label>
+                <input class="form-control" id="annee" name="annee" type="text" value="{{#if experience.annee}}{{experience.annee}}{{/if}}"/>
+            </div>
+            <div class="form-group">
+                <label for="formation">Formation :</label>
+                <input class="form-control" id="formation" name="formation" type="text" value="{{#if experience.formation}}{{experience.formation}}{{/if}}"/>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville :</label>
+                <select class="form-control" name="ville" id="ville">
+                    <option value="Bordeaux" {{#if ville.bordeaux}}selected{{/if}}>Bordeaux</option>
+                    <option value="Andernos" {{#if ville.andernos}}selected{{/if}}>Andernos</option>
+                    <option value="Audenge" {{#if ville.audenge}}selected{{/if}}>Audenge</option>
+                    <option value="Arcachon" {{#if ville.arcachon}}selected{{/if}}>Arcachon</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </body>
 </html>
